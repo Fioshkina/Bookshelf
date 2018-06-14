@@ -1,0 +1,99 @@
+<html>
+
+    <div>
+        <form method = "post" action="/add">
+            <input type = "title" name = "title" placeholder = "Enter the title" />
+            <input type="description" name="description" placeholder="Enter the description" />
+            <input type = "author" name = "author" placeholder = "Enter the author" />
+            <input type="isbn" name="isbn" placeholder="Enter the isbn" />
+            <input type="printYear" name="printYear" placeholder="Enter the print year" />
+            <button type="submit">Add book</button>
+        </form>
+    </div>
+
+    <body>
+
+        <form method="post" action="filterTitle">
+            <input type="text" name="filter" placeholder = "Enter the title" />
+            <button type="submit">Search for the title</button>
+        </form>
+
+        <form method="post" action="filterAuthor">
+            <input type="text" name="filter" placeholder = "Enter the author" />
+            <button type="submit">Search for the author </button>
+        </form>
+
+        <form method="post" action="filterNotRead">
+            <button type="submit">Search for unread books</button>
+        </form>
+
+        <form method="post" action="filterYear">
+            <input type="text" name="filterFrom" placeholder = "Enter the date from" />
+            <input type="text" name="filterTo" placeholder = "Enter the date to" />
+            <button type="submit">Search for printed in this period</button>
+        </form>
+
+        <br/>
+        <form method="post" action="/allBooks">
+            <button type="submit">All books</button>
+        </form>
+        <br/>
+
+        <table>
+            <tr>
+                {{#pages}}
+                <th>
+                    <form method="post" action="/{{value}}">
+                        <input type="hidden" name="value" value={{value}} />
+                        <button type="submit">{{value}}</button>
+                    </form>
+                </th>
+                {{/pages}}
+            </tr>
+        </table>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>isbn</th>
+                <th align="center">Print Year</th>
+                <th align="center">Read Already</th>
+            </tr>
+
+            {{#books}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{title}}</td>
+                <td>{{description}}</td>
+                <td>{{author}}</td>
+                <td>{{isbn}}</td>
+                <td align="center">{{printYear}}</td>
+                <td align="center">{{readAlready}}</td>
+                <td>
+                    <form method="post" action="read">
+                        <input type="hidden" name="id" value={{id}} />
+                        <button type="submit">Read</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="update">
+                        <input type="hidden" name="id" value={{id}} />
+                        <button onclick="window.location.href = '/update';">Update</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="delete">
+                        <input type="hidden" name="id" value={{id}} />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/books}}
+
+        </table>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+
+    <form method="post" action="startUpdate">
+        <div>Updating the book with id: {{book.id}} </div>
+        <br/>
+        <input type="hidden" name="id" value ={{book.id}} />
+        <div>Title: </div>
+        <input type="text" name="title" placeholder = {{book.title}} />
+        <br/>
+        <br/>
+        <br/>
+        <div>Description: </div>
+        <input type="text" name="description" placeholder = {{book.description}} />
+        <br/>
+        <br/>
+        <br/>
+        <div>Author: </div>
+        <div>{{book.author}}</div>
+        <br/>
+        <br/>
+        <div>isbn: </div>
+        <input type="text" name="isbn" placeholder = {{book.isbn}} />
+        <br/>
+        <br/>
+        <br/>
+        <div>Print year: </div>
+        <input type="text" name="printYear" placeholder = {{book.printYear}} />
+        <br/>
+        <br/>
+        <br/>
+        <button onclick="window.location.href = '/main';">Update</button>
+    </form>
+</html>
